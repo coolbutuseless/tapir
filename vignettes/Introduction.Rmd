@@ -1,0 +1,78 @@
+---
+title: "Introduction to tapir"
+author: "mikefc"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+suppressPackageStartupMessages({
+  library(tapir)
+})
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+Rationale
+------------------------------------------------------------------------------
+
+This is a simple library written in order bootstrap another idea, without having to carry a dependency on a real
+arbitrary precision library like [gmp](https://cran.r-project.org/package=gmp) or [Rmpfr](https://cran.r-project.org/package=Rmpfr)
+
+
+Supported data types
+------------------------------------------------------------------------------
+
+The only supported datatype is an unsigned integer represented in a character string. e.g.
+
+* "1234"
+* "9237409238740928374029374293"
+
+
+
+Supported operations
+------------------------------------------------------------------------------
+
+* `%add%` - Addition 
+* `%sub%` - Subtration 
+* `%sub%` - Multiplication
+* `%div%` - Division 
+* `%mod%` - Modulo operator
+* Logical 
+    * `%gt%`  - greater than 
+    * `%gte%` - greater than or equal to
+    * `%eq%`  - equal to
+    * `%lt%`  - less than
+    * `%lte%` - less than or equal to
+
+
+Helper functions
+------------------------------------------------------------------------------
+
+* `rbigint(digits)`
+    * Create a big integer with the given number of digits
+    
+    
+    
+Examples
+------------------------------------------------------------------------------
+
+```{r}
+a <- rbigint(30)
+b <- rbigint(20)
+a
+b
+
+a %mul% b
+a %div% b
+a %mod% b
+a %add% b
+a %sub% b
+```
